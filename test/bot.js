@@ -72,10 +72,6 @@ describe('The Bot', function () {
         var bot = new Bot('platypus');
         assert.deepEqual(bot.parseKarmaRequest('mnesia++'), { user:'mnesia', direction:1 });
         assert.deepEqual(bot.parseKarmaRequest('buster--'), { user:'buster', direction:-1 });
-    it('does not allow users to give themselves karma', function() {
-      var bot = new Bot('aardvark');
-
-    });
     });
     it('knows how to identify factoid retrieval with mention requests', function (){
         var bot = new Bot('sunshine');
