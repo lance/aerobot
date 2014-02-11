@@ -62,12 +62,20 @@ describe('The Bot', function () {
     });
     it('knows how to identify karma requests', function () {
         var bot = new Bot('mule');
-        assert.ok(bot.isKarmaRequest('this was amazing, mule++'));
+        assert.ok(bot.isKarmaRequest('this was amazing, mule++', 'lance', 'qmx'));
+    });
+    it('avoids self-promoting karma requests', function () {
+        var bot = new Bot('mule');
+        assert.notOk(bot.isKarmaRequest('this was amazing, mule++', 'qmx', 'qmx'));
     });
     it('knows how to parse karma requests', function () {
         var bot = new Bot('platypus');
         assert.deepEqual(bot.parseKarmaRequest('mnesia++'), { user:'mnesia', direction:1 });
         assert.deepEqual(bot.parseKarmaRequest('buster--'), { user:'buster', direction:-1 });
+    it('does not allow users to give themselves karma', function() {
+      var bot = new Bot('aardvark');
+
+    });
     });
     it('knows how to identify factoid retrieval with mention requests', function (){
         var bot = new Bot('sunshine');
