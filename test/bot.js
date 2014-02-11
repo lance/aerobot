@@ -62,7 +62,15 @@ describe('The Bot', function () {
     });
     it('knows how to identify karma requests', function () {
         var bot = new Bot('mule');
-        assert.ok(bot.isKarmaRequest('this was amazing, mule++', 'lance', 'qmx'));
+        assert.ok(bot.isKarmaRequest('this was amazing, mule++', undefined, 'qmx'));
+    });
+    it('knows how to identify what is not a karma request', function () {
+        var bot = new Bot('mule');
+        assert.notOk(bot.isKarmaRequest('this was amazing'));
+    });
+    it('knows how to identify what is not a karma request', function () {
+        var bot = new Bot('mule');
+        assert.notOk(bot.isKarmaRequest('this was amazing', 'lance', 'qmx'));
     });
     it('avoids self-promoting karma requests', function () {
         var bot = new Bot('mule');
